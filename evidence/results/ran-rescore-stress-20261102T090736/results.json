@@ -1,0 +1,367 @@
+{
+  "started": "2026-11-02T09:09:26Z",
+  "pip_exit": 0,
+  "torch": "2.9.0+cpu",
+  "split": {
+    "train_days": [
+      0,
+      83
+    ],
+    "val_days": [
+      85,
+      94
+    ],
+    "test_days": [
+      96,
+      119
+    ],
+    "train_stride": 5
+  },
+  "data_hashes": {
+    "a": {
+      "file_sha256": "f173cf19c87b971f063bfe1a8c6e90086b7094138901d36ee01edec978e129ba",
+      "test_slice_sha256": "4e96a5cbf3935cc50ef9e46d7f01993138880e547433011d0b9f036e6642420e"
+    },
+    "b": {
+      "file_sha256": "3a4ecb38009f9e46871692b5ddfcafec770ccb37e4c5f333492dedebb8e19c4b",
+      "test_slice_sha256": "c74c888b0f95ac8c5f20f9d121166fe5c437731cb2f5857528c85eb34de93ede"
+    }
+  },
+  "test_set_hash_matches_declaration": {
+    "a": true,
+    "b": true
+  },
+  "withheld_labels_at_home": {
+    "a": "mobility",
+    "b": "congestion"
+  },
+  "training": {},
+  "scores": {
+    "local_stress_a": {
+      "a": {
+        "y_congestion": {
+          "auroc": 0.9999999719565555,
+          "f1": 0.9998501146622834,
+          "precision": 0.9998850838887612,
+          "recall": 0.9998151478816947,
+          "threshold_from_validation": 0.15936048328876495,
+          "threshold_source_site": "a",
+          "withheld_at_home": false,
+          "test_windows": 1033200,
+          "test_positives": 200160,
+          "events_scored": 1668,
+          "fraction_warned_60min_ahead": 1.0,
+          "fraction_warned_any_lead": 1.0
+        },
+        "y_mobility": {
+          "auroc": 0.23115519180211613,
+          "f1": 0.06667670993694261,
+          "precision": 0.03448849980011016,
+          "recall": 0.9996913580246913,
+          "threshold_from_validation": 3.435625102117584e-39,
+          "threshold_source_site": "b",
+          "withheld_at_home": true,
+          "test_windows": 1033200,
+          "test_positives": 35640,
+          "events_scored": 297,
+          "fraction_warned_60min_ahead": 1.0,
+          "fraction_warned_any_lead": 1.0
+        }
+      },
+      "b": {
+        "y_congestion": {
+          "auroc": 0.9999986220476627,
+          "f1": 0.9882977471528877,
+          "precision": 0.9770429926837465,
+          "recall": 0.9998148148148148,
+          "threshold_from_validation": 0.15936048328876495,
+          "threshold_source_site": "a",
+          "withheld_at_home": true,
+          "test_windows": 1033200,
+          "test_positives": 37800,
+          "events_scored": 315,
+          "fraction_warned_60min_ahead": 1.0,
+          "fraction_warned_any_lead": 1.0
+        },
+        "y_mobility": {
+          "auroc": 0.31717100693722794,
+          "f1": 0.3236475052249254,
+          "precision": 0.19307790264711153,
+          "recall": 0.9996941436020859,
+          "threshold_from_validation": 3.435625102117584e-39,
+          "threshold_source_site": "b",
+          "withheld_at_home": false,
+          "test_windows": 1033200,
+          "test_positives": 199440,
+          "events_scored": 1662,
+          "fraction_warned_60min_ahead": 1.0,
+          "fraction_warned_any_lead": 1.0
+        }
+      }
+    },
+    "local_stress_b": {
+      "a": {
+        "y_congestion": {
+          "auroc": 0.3001472093626597,
+          "f1": 0.32445393353545854,
+          "precision": 0.1936588940332156,
+          "recall": 0.9995153876898482,
+          "threshold_from_validation": 1.688609206228732e-33,
+          "threshold_source_site": "a",
+          "withheld_at_home": false,
+          "test_windows": 1033200,
+          "test_positives": 200160,
+          "events_scored": 1668,
+          "fraction_warned_60min_ahead": 1.0,
+          "fraction_warned_any_lead": 1.0
+        },
+        "y_mobility": {
+          "auroc": 1.0,
+          "f1": 0.9999438864261265,
+          "precision": 0.999887779149366,
+          "recall": 1.0,
+          "threshold_from_validation": 0.7377191781997681,
+          "threshold_source_site": "b",
+          "withheld_at_home": true,
+          "test_windows": 1033200,
+          "test_positives": 35640,
+          "events_scored": 297,
+          "fraction_warned_60min_ahead": 1.0,
+          "fraction_warned_any_lead": 1.0
+        }
+      },
+      "b": {
+        "y_congestion": {
+          "auroc": 0.19904736581927662,
+          "f1": 0.07057942542988183,
+          "precision": 0.0365808097623675,
+          "recall": 0.9998677248677249,
+          "threshold_from_validation": 1.688609206228732e-33,
+          "threshold_source_site": "a",
+          "withheld_at_home": true,
+          "test_windows": 1033200,
+          "test_positives": 37800,
+          "events_scored": 315,
+          "fraction_warned_60min_ahead": 1.0,
+          "fraction_warned_any_lead": 1.0
+        },
+        "y_mobility": {
+          "auroc": 0.9999999990738797,
+          "f1": 0.9999899718208165,
+          "precision": 1.0,
+          "recall": 0.9999799438427597,
+          "threshold_from_validation": 0.7377191781997681,
+          "threshold_source_site": "b",
+          "withheld_at_home": false,
+          "test_windows": 1033200,
+          "test_positives": 199440,
+          "events_scored": 1662,
+          "fraction_warned_60min_ahead": 1.0,
+          "fraction_warned_any_lead": 1.0
+        }
+      }
+    },
+    "central_stress": {
+      "a": {
+        "y_congestion": {
+          "auroc": 0.9999860915400735,
+          "f1": 0.9989765096482688,
+          "precision": 0.998303647158609,
+          "recall": 0.999650279776179,
+          "threshold_from_validation": 0.0427011214196682,
+          "threshold_source_site": "a",
+          "withheld_at_home": false,
+          "test_windows": 1033200,
+          "test_positives": 200160,
+          "events_scored": 1668,
+          "fraction_warned_60min_ahead": 1.0,
+          "fraction_warned_any_lead": 1.0
+        },
+        "y_mobility": {
+          "auroc": 0.996685482456543,
+          "f1": 0.5999803709883207,
+          "precision": 0.9985625612544919,
+          "recall": 0.42881593714927047,
+          "threshold_from_validation": 0.005434074439108372,
+          "threshold_source_site": "b",
+          "withheld_at_home": true,
+          "test_windows": 1033200,
+          "test_positives": 35640,
+          "events_scored": 297,
+          "fraction_warned_60min_ahead": 0.7575757575757576,
+          "fraction_warned_any_lead": 0.7946127946127947
+        }
+      },
+      "b": {
+        "y_congestion": {
+          "auroc": 0.9874966874075775,
+          "f1": 0.6256315196452586,
+          "precision": 0.9992453268315338,
+          "recall": 0.45537037037037037,
+          "threshold_from_validation": 0.0427011214196682,
+          "threshold_source_site": "a",
+          "withheld_at_home": true,
+          "test_windows": 1033200,
+          "test_positives": 37800,
+          "events_scored": 315,
+          "fraction_warned_60min_ahead": 0.7238095238095238,
+          "fraction_warned_any_lead": 0.8095238095238095
+        },
+        "y_mobility": {
+          "auroc": 0.9999993419013268,
+          "f1": 0.9997343145314912,
+          "precision": 0.9995138526923539,
+          "recall": 0.9999548736462094,
+          "threshold_from_validation": 0.005434074439108372,
+          "threshold_source_site": "b",
+          "withheld_at_home": false,
+          "test_windows": 1033200,
+          "test_positives": 199440,
+          "events_scored": 1662,
+          "fraction_warned_60min_ahead": 1.0,
+          "fraction_warned_any_lead": 1.0
+        }
+      }
+    },
+    "federated_stress_dp": {
+      "a": {
+        "y_congestion": {
+          "auroc": 0.9980152096151754,
+          "f1": 0.9761598179795227,
+          "precision": 0.9770514777647088,
+          "recall": 0.9752697841726619,
+          "threshold_from_validation": 9.320154640590772e-05,
+          "threshold_source_site": "a",
+          "withheld_at_home": false,
+          "test_windows": 1033200,
+          "test_positives": 200160,
+          "events_scored": 1668,
+          "fraction_warned_60min_ahead": 1.0,
+          "fraction_warned_any_lead": 1.0
+        },
+        "y_mobility": {
+          "auroc": 0.9987117932514032,
+          "f1": 0.8793540135917948,
+          "precision": 0.794895044657025,
+          "recall": 0.9838945005611672,
+          "threshold_from_validation": 0.0002747513062786311,
+          "threshold_source_site": "b",
+          "withheld_at_home": true,
+          "test_windows": 1033200,
+          "test_positives": 35640,
+          "events_scored": 297,
+          "fraction_warned_60min_ahead": 1.0,
+          "fraction_warned_any_lead": 1.0
+        }
+      },
+      "b": {
+        "y_congestion": {
+          "auroc": 0.9959639034399508,
+          "f1": 0.7391756638017231,
+          "precision": 0.5978141897962851,
+          "recall": 0.9680952380952381,
+          "threshold_from_validation": 9.320154640590772e-05,
+          "threshold_source_site": "a",
+          "withheld_at_home": true,
+          "test_windows": 1033200,
+          "test_positives": 37800,
+          "events_scored": 315,
+          "fraction_warned_60min_ahead": 1.0,
+          "fraction_warned_any_lead": 1.0
+        },
+        "y_mobility": {
+          "auroc": 0.9985089238521669,
+          "f1": 0.9867670710269422,
+          "precision": 0.9814687135735721,
+          "recall": 0.9921229442438829,
+          "threshold_from_validation": 0.0002747513062786311,
+          "threshold_source_site": "b",
+          "withheld_at_home": false,
+          "test_windows": 1033200,
+          "test_positives": 199440,
+          "events_scored": 1662,
+          "fraction_warned_60min_ahead": 1.0,
+          "fraction_warned_any_lead": 1.0
+        }
+      }
+    }
+  },
+  "weight_files": {
+    "local_stress_a": {
+      "source": "s3://bb26-p-team08-data-301431061930-use2/ran-fl/jobs/ran-stress-local-20261102T082611/output/local_stress_a.safetensors",
+      "sha256": "b7536762edd395ebf9a1fda8a6896e4f7b9a8203a42c1573e606ab8c3ff40bf4"
+    },
+    "local_stress_b": {
+      "source": "s3://bb26-p-team08-data-301431061930-use2/ran-fl/jobs/ran-stress-local-20261102T082611/output/local_stress_b.safetensors",
+      "sha256": "30d64ff8c9808a334f93b83fc4c9c941b6b914194e2acde0bfc001b2d49c941b"
+    },
+    "central_stress": {
+      "source": "s3://bb26-p-team08-data-301431061930-use2/ran-fl/jobs/ran-stress-central-20261102T082613/output/central_stress.safetensors",
+      "sha256": "50c05151afc67ddcb5b60e1f22d193f9a259c68d0ff7b822a462c2199be3e735"
+    },
+    "federated_stress_dp": {
+      "source": "s3://bb26-p-team08-data-301431061930-use2/ran-fl/models/ran-stress-fed-dp-20261102T0835/federated_stress_final_iteration4.safetensors",
+      "sha256": "7500b6246732fc995193254767817326dc6f4b59271aca7d35b4f34889603ac7"
+    }
+  },
+  "records_sha256": {
+    "local_stress_a__a__y_congestion": "fc40c2c0cc97726d7b5ed1e852ecc913d9294722fe302d4bd9d5e3a3d2da25f3",
+    "local_stress_a__a__y_mobility": "136b34a8df4928327f838bd10ddd24eb520a5b10c41d65441e9382b53957bae3",
+    "local_stress_a__b__y_congestion": "6f9b8567a32a69fdac264fffef0a42dc4cff58228db8070b2cad443cbb69c07e",
+    "local_stress_a__b__y_mobility": "77b6539e56e128cec7a98d489ca94e5f2c7ff9087d4b8484b691e479fff37a9d",
+    "local_stress_b__a__y_congestion": "0838dbad1831b37b0c7b51c65f97a1d0daef599ec66282a48c71f142c7e3b46b",
+    "local_stress_b__a__y_mobility": "849d9cc98ecf0659baa1e17d1b37b3727d743aae78336d5d802376c8ae36df29",
+    "local_stress_b__b__y_congestion": "f83c5ec7fb4a3d5e6433a15ff99f3b935cb828223c6c45206e84cf900b9e766a",
+    "local_stress_b__b__y_mobility": "464450d46cdfc5fc556e3c902979b4f95d1bea01d5dc01ed95c0a225fb388aff",
+    "central_stress__a__y_congestion": "7b1a778b7332dc8adebf3df2fcdd8ee3f5efea203902d6c3f1bdfe9f7faefab6",
+    "central_stress__a__y_mobility": "4e34f479ea40c470599e919d2b2e86b10e227e85e1b46a9467727f783728523c",
+    "central_stress__b__y_congestion": "8bdb6ab16ba60469c80cd4fda8458bdcbf568c88c877533e1ff439bfc12dff1b",
+    "central_stress__b__y_mobility": "243b465dc2233e36c24477ca2aa8ea1e23dd2333f6df403046583f8176a5864b",
+    "federated_stress_dp__a__y_congestion": "f71715e0c624a6f69c2f45a42aab6d6017492398533412ebde715299b6e0a05f",
+    "federated_stress_dp__a__y_mobility": "13c721a3a5f4078aa507e37312fa0b5a76154f85ce9064d75fc984b5fb1bfa8d",
+    "federated_stress_dp__b__y_congestion": "28c1aafca7c166e2c89f2382a6024ca053826910ea579fbacd98b236b1c6baa7",
+    "federated_stress_dp__b__y_mobility": "e4c88dd31695ebb38a3516c85ac6f50babbc5e7e795ec5d4f96999f8c01de706"
+  },
+  "epsilon": {
+    "a": {
+      "target_epsilon": 1.0,
+      "delta": 1.90039945636413e-12,
+      "n_training_windows": 725400,
+      "batch_size": 512,
+      "local_epochs": 2,
+      "global_iterations": 3,
+      "steps_per_epoch": 1417,
+      "real_optimizer_steps": 8502,
+      "sampling_rate": 0.0007057163020465773,
+      "noise_multiplier_used": 2.0,
+      "max_grad_norm_used": 1.0,
+      "epsilon_spent_real_steps": 0.42681826442310444,
+      "if_framework_accounting_were_left_unchanged": {
+        "noise_multiplier_it_would_have_chosen": 2.0,
+        "max_grad_norm": 1.0,
+        "real_epsilon_that_would_have_resulted": 0.42681826442310444
+      }
+    },
+    "b": {
+      "target_epsilon": 1.0,
+      "delta": 1.90039945636413e-12,
+      "n_training_windows": 725400,
+      "batch_size": 512,
+      "local_epochs": 2,
+      "global_iterations": 3,
+      "steps_per_epoch": 1417,
+      "real_optimizer_steps": 8502,
+      "sampling_rate": 0.0007057163020465773,
+      "noise_multiplier_used": 2.0,
+      "max_grad_norm_used": 1.0,
+      "epsilon_spent_real_steps": 0.42681826442310444,
+      "if_framework_accounting_were_left_unchanged": {
+        "noise_multiplier_it_would_have_chosen": 2.0,
+        "max_grad_norm": 1.0,
+        "real_epsilon_that_would_have_resulted": 0.42681826442310444
+      }
+    }
+  },
+  "status": "ok",
+  "finished": "2026-11-02T09:10:16Z"
+}

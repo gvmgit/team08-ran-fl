@@ -1,0 +1,774 @@
+{
+  "started": "2026-11-02T09:10:39Z",
+  "wheel_install_exit": 0,
+  "torch": "2.8.0+cu129",
+  "gpu": "NVIDIA A10G",
+  "base_download_seconds": 23.9,
+  "corpus": {
+    "a": {
+      "train": 700,
+      "val": 90,
+      "test": 260
+    },
+    "b": {
+      "train": 700,
+      "val": 90,
+      "test": 260
+    }
+  },
+  "load_seconds": 27.8,
+  "training": {
+    "local_a": {
+      "sites": [
+        "a"
+      ],
+      "epochs": 6,
+      "examples": 700,
+      "curve": [
+        {
+          "epoch": 1,
+          "train_loss": 0.2922365509650924,
+          "val_loss": 0.041648127425175444,
+          "seconds": 55.7
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.026574509795120157,
+          "val_loss": 0.021872310112408328,
+          "seconds": 55.5
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.013183038080156124,
+          "val_loss": 0.011385086584431265,
+          "seconds": 55.4
+        },
+        {
+          "epoch": 4,
+          "train_loss": 0.005541088874286454,
+          "val_loss": 0.009408017104148764,
+          "seconds": 55.3
+        },
+        {
+          "epoch": 5,
+          "train_loss": 0.0021248363809718285,
+          "val_loss": 0.009988321989601342,
+          "seconds": 55.3
+        },
+        {
+          "epoch": 6,
+          "train_loss": 0.00394323938239309,
+          "val_loss": 0.015245606290082921,
+          "seconds": 55.4
+        }
+      ]
+    },
+    "local_b": {
+      "sites": [
+        "b"
+      ],
+      "epochs": 6,
+      "examples": 700,
+      "curve": [
+        {
+          "epoch": 1,
+          "train_loss": 0.2982510755113749,
+          "val_loss": 0.04654799805802161,
+          "seconds": 62.2
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.03685993151950904,
+          "val_loss": 0.14011487641258302,
+          "seconds": 62.0
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.036128288780508395,
+          "val_loss": 0.02922707131603303,
+          "seconds": 62.0
+        },
+        {
+          "epoch": 4,
+          "train_loss": 0.028422821265518327,
+          "val_loss": 0.032671617019981565,
+          "seconds": 62.0
+        },
+        {
+          "epoch": 5,
+          "train_loss": 0.01947872072659348,
+          "val_loss": 0.019154803622710968,
+          "seconds": 62.0
+        },
+        {
+          "epoch": 6,
+          "train_loss": 0.01542312015557069,
+          "val_loss": 0.014909255828202888,
+          "seconds": 62.0
+        }
+      ]
+    },
+    "central": {
+      "sites": [
+        "a",
+        "b"
+      ],
+      "epochs": 6,
+      "examples": 1400,
+      "curve": [
+        {
+          "epoch": 1,
+          "train_loss": 0.19337895301569785,
+          "val_loss": 0.03671505277399918,
+          "seconds": 122.8
+        },
+        {
+          "epoch": 2,
+          "train_loss": 0.03392315619226013,
+          "val_loss": 0.03170519092523521,
+          "seconds": 123.2
+        },
+        {
+          "epoch": 3,
+          "train_loss": 0.02494772850469287,
+          "val_loss": 0.017629683507015683,
+          "seconds": 122.9
+        },
+        {
+          "epoch": 4,
+          "train_loss": 0.013512667292400563,
+          "val_loss": 0.010975284162167458,
+          "seconds": 123.2
+        },
+        {
+          "epoch": 5,
+          "train_loss": 0.008335478010225675,
+          "val_loss": 0.0054381090481698206,
+          "seconds": 123.1
+        },
+        {
+          "epoch": 6,
+          "train_loss": 0.004894413981424545,
+          "val_loss": 0.005922671099452566,
+          "seconds": 123.3
+        }
+      ]
+    }
+  },
+  "scores": {
+    "untuned_base": {
+      "a": {
+        "CONGESTION": {
+          "n": 100,
+          "family_correct": 22,
+          "cause_correct": 17,
+          "action_correct": 34,
+          "confusion": {
+            "CONGESTION": 22,
+            "NONE": 78
+          },
+          "family_acc": 0.22,
+          "cause_acc_given_family": 0.17,
+          "action_acc_given_cause": 0.34
+        },
+        "NONE": {
+          "n": 60,
+          "family_correct": 57,
+          "cause_correct": 0,
+          "action_correct": 0,
+          "confusion": {
+            "NONE": 57,
+            "CONGESTION": 2,
+            "MOBILITY": 1
+          },
+          "family_acc": 0.95
+        },
+        "MOBILITY": {
+          "n": 100,
+          "family_correct": 94,
+          "cause_correct": 14,
+          "action_correct": 52,
+          "confusion": {
+            "MOBILITY": 94,
+            "NONE": 6
+          },
+          "family_acc": 0.94,
+          "cause_acc_given_family": 0.14,
+          "action_acc_given_cause": 0.52
+        },
+        "ALL": {
+          "n": 260,
+          "family_acc": 0.6653846153846154
+        }
+      },
+      "b": {
+        "MOBILITY": {
+          "n": 100,
+          "family_correct": 92,
+          "cause_correct": 23,
+          "action_correct": 46,
+          "confusion": {
+            "MOBILITY": 92,
+            "NONE": 8
+          },
+          "family_acc": 0.92,
+          "cause_acc_given_family": 0.23,
+          "action_acc_given_cause": 0.46
+        },
+        "NONE": {
+          "n": 60,
+          "family_correct": 48,
+          "cause_correct": 0,
+          "action_correct": 0,
+          "confusion": {
+            "NONE": 48,
+            "MOBILITY": 12
+          },
+          "family_acc": 0.8
+        },
+        "CONGESTION": {
+          "n": 100,
+          "family_correct": 23,
+          "cause_correct": 59,
+          "action_correct": 28,
+          "confusion": {
+            "CONGESTION": 23,
+            "NONE": 77
+          },
+          "family_acc": 0.23,
+          "cause_acc_given_family": 0.59,
+          "action_acc_given_cause": 0.28
+        },
+        "ALL": {
+          "n": 260,
+          "family_acc": 0.6269230769230769
+        }
+      }
+    },
+    "local_a": {
+      "a": {
+        "CONGESTION": {
+          "n": 100,
+          "family_correct": 100,
+          "cause_correct": 100,
+          "action_correct": 100,
+          "confusion": {
+            "CONGESTION": 100
+          },
+          "family_acc": 1.0,
+          "cause_acc_given_family": 1.0,
+          "action_acc_given_cause": 1.0
+        },
+        "NONE": {
+          "n": 60,
+          "family_correct": 57,
+          "cause_correct": 0,
+          "action_correct": 0,
+          "confusion": {
+            "NONE": 57,
+            "CONGESTION": 3
+          },
+          "family_acc": 0.95
+        },
+        "MOBILITY": {
+          "n": 100,
+          "family_correct": 0,
+          "cause_correct": 14,
+          "action_correct": 52,
+          "confusion": {
+            "CONGESTION": 98,
+            "NONE": 2
+          },
+          "family_acc": 0.0,
+          "cause_acc_given_family": 0.14,
+          "action_acc_given_cause": 0.52
+        },
+        "ALL": {
+          "n": 260,
+          "family_acc": 0.6038461538461538
+        }
+      },
+      "b": {
+        "MOBILITY": {
+          "n": 100,
+          "family_correct": 0,
+          "cause_correct": 23,
+          "action_correct": 46,
+          "confusion": {
+            "CONGESTION": 98,
+            "NONE": 2
+          },
+          "family_acc": 0.0,
+          "cause_acc_given_family": 0.23,
+          "action_acc_given_cause": 0.46
+        },
+        "NONE": {
+          "n": 60,
+          "family_correct": 58,
+          "cause_correct": 0,
+          "action_correct": 0,
+          "confusion": {
+            "NONE": 58,
+            "CONGESTION": 2
+          },
+          "family_acc": 0.9666666666666667
+        },
+        "CONGESTION": {
+          "n": 100,
+          "family_correct": 100,
+          "cause_correct": 97,
+          "action_correct": 100,
+          "confusion": {
+            "CONGESTION": 100
+          },
+          "family_acc": 1.0,
+          "cause_acc_given_family": 0.97,
+          "action_acc_given_cause": 1.0
+        },
+        "ALL": {
+          "n": 260,
+          "family_acc": 0.6076923076923076
+        }
+      }
+    },
+    "local_b": {
+      "a": {
+        "CONGESTION": {
+          "n": 100,
+          "family_correct": 0,
+          "cause_correct": 62,
+          "action_correct": 34,
+          "confusion": {
+            "NONE": 100
+          },
+          "family_acc": 0.0,
+          "cause_acc_given_family": 0.62,
+          "action_acc_given_cause": 0.34
+        },
+        "NONE": {
+          "n": 60,
+          "family_correct": 58,
+          "cause_correct": 0,
+          "action_correct": 0,
+          "confusion": {
+            "NONE": 58,
+            "MOBILITY": 2
+          },
+          "family_acc": 0.9666666666666667
+        },
+        "MOBILITY": {
+          "n": 100,
+          "family_correct": 97,
+          "cause_correct": 93,
+          "action_correct": 100,
+          "confusion": {
+            "MOBILITY": 97,
+            "NONE": 3
+          },
+          "family_acc": 0.97,
+          "cause_acc_given_family": 0.93,
+          "action_acc_given_cause": 1.0
+        },
+        "ALL": {
+          "n": 260,
+          "family_acc": 0.5961538461538461
+        }
+      },
+      "b": {
+        "MOBILITY": {
+          "n": 100,
+          "family_correct": 99,
+          "cause_correct": 88,
+          "action_correct": 100,
+          "confusion": {
+            "MOBILITY": 99,
+            "NONE": 1
+          },
+          "family_acc": 0.99,
+          "cause_acc_given_family": 0.88,
+          "action_acc_given_cause": 1.0
+        },
+        "NONE": {
+          "n": 60,
+          "family_correct": 59,
+          "cause_correct": 0,
+          "action_correct": 0,
+          "confusion": {
+            "NONE": 59,
+            "MOBILITY": 1
+          },
+          "family_acc": 0.9833333333333333
+        },
+        "CONGESTION": {
+          "n": 100,
+          "family_correct": 0,
+          "cause_correct": 24,
+          "action_correct": 28,
+          "confusion": {
+            "NONE": 100
+          },
+          "family_acc": 0.0,
+          "cause_acc_given_family": 0.24,
+          "action_acc_given_cause": 0.28
+        },
+        "ALL": {
+          "n": 260,
+          "family_acc": 0.6076923076923076
+        }
+      }
+    },
+    "central": {
+      "a": {
+        "CONGESTION": {
+          "n": 100,
+          "family_correct": 100,
+          "cause_correct": 100,
+          "action_correct": 100,
+          "confusion": {
+            "CONGESTION": 100
+          },
+          "family_acc": 1.0,
+          "cause_acc_given_family": 1.0,
+          "action_acc_given_cause": 1.0
+        },
+        "NONE": {
+          "n": 60,
+          "family_correct": 56,
+          "cause_correct": 0,
+          "action_correct": 0,
+          "confusion": {
+            "NONE": 56,
+            "MOBILITY": 2,
+            "CONGESTION": 2
+          },
+          "family_acc": 0.9333333333333333
+        },
+        "MOBILITY": {
+          "n": 100,
+          "family_correct": 100,
+          "cause_correct": 100,
+          "action_correct": 100,
+          "confusion": {
+            "MOBILITY": 100
+          },
+          "family_acc": 1.0,
+          "cause_acc_given_family": 1.0,
+          "action_acc_given_cause": 1.0
+        },
+        "ALL": {
+          "n": 260,
+          "family_acc": 0.9846153846153847
+        }
+      },
+      "b": {
+        "MOBILITY": {
+          "n": 100,
+          "family_correct": 100,
+          "cause_correct": 100,
+          "action_correct": 100,
+          "confusion": {
+            "MOBILITY": 100
+          },
+          "family_acc": 1.0,
+          "cause_acc_given_family": 1.0,
+          "action_acc_given_cause": 1.0
+        },
+        "NONE": {
+          "n": 60,
+          "family_correct": 58,
+          "cause_correct": 0,
+          "action_correct": 0,
+          "confusion": {
+            "NONE": 58,
+            "MOBILITY": 2
+          },
+          "family_acc": 0.9666666666666667
+        },
+        "CONGESTION": {
+          "n": 100,
+          "family_correct": 100,
+          "cause_correct": 100,
+          "action_correct": 100,
+          "confusion": {
+            "CONGESTION": 100
+          },
+          "family_acc": 1.0,
+          "cause_acc_given_family": 1.0,
+          "action_acc_given_cause": 1.0
+        },
+        "ALL": {
+          "n": 260,
+          "family_acc": 0.9923076923076923
+        }
+      }
+    }
+  },
+  "samples": {
+    "untuned_base": {
+      "a": [
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: UE_SURGE | ACTION: ENABLE_LOAD_BALANCING",
+          "generated": "The failure family is PRB_UTIL_HIGH, which is likely due to a high utilization of PRBs in the cell. The first action is to check the cell load and PRB utilization to identify the"
+        },
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: COVERAGE_OVERLAP | ACTION: INCREASE_ELECTRICAL_TILT",
+          "generated": "The failure family is PRB_UTIL_HIGH, which is likely due to a high utilization of PRBs in the cell. The first action is to check the cell load and PRB utilization to identify the"
+        },
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: COVERAGE_OVERLAP | ACTION: INCREASE_ELECTRICAL_TILT",
+          "generated": "The failure family is PRB_UTIL_HIGH, which is likely due to a high utilization of PRBs in the cell. The first action is to check the cell load and PRB utilization to identify the"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: PINGPONG_NEIGHBOR | ACTION: FIX_NEIGHBOR_RELATIONS",
+          "generated": "The failure family is HO_FAILURE_RATE_HIGH. The likely cause is that the HO (Handover) failure rate is high, which could be due to issues with the handover procedure, such as incorrect"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT",
+          "generated": "The failure family is \"HO_FAILURE_RATE_HIGH\". The likely cause is that the HO (Handover) failure rate is high, which could be due to issues with the handover procedure, such as"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: PINGPONG_NEIGHBOR | ACTION: FIX_NEIGHBOR_RELATIONS",
+          "generated": "The failure family is HO_FAILURE_RATE_HIGH. The likely cause is that the HO failure rate is high, which may be due to a high number of handovers that fail. The first action is to"
+        }
+      ],
+      "b": [
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: UE_SURGE | ACTION: ENABLE_LOAD_BALANCING",
+          "generated": "The failure family is PRB_UTIL_HIGH, which is likely due to a high utilization of PRBs in the cell. The first action is to check the cell utilization and ensure that it is within acceptable"
+        },
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: PRB_EXHAUSTION | ACTION: ADD_CARRIER_OR_OFFLOAD",
+          "generated": "The failure family is PRB_UTIL_HIGH, which is likely due to a high utilization of PRBs in the cell. The first action is to check the cell load and PRB utilization to identify the"
+        },
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: PRB_EXHAUSTION | ACTION: ADD_CARRIER_OR_OFFLOAD",
+          "generated": "The failure family is PRB_UTIL_HIGH, which is likely caused by a high number of PRBs being used by the UE. The first action is to check the PRB utilization and ensure that it"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT",
+          "generated": "The failure family is \"HO_FAILURE\", and the likely cause is \"NEIGHBOR_RELATION_UNSTABLE\". The first action is to check the neighbor relation and ensure that the neighbor relation is stable"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT",
+          "generated": "The failure family is HO_FAILURE_RATE_HIGH, which is likely due to a high number of handover failures. The first action is to investigate the cause of the high handover failure rate, which may"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT",
+          "generated": "The failure family is HO_FAILURE_RATE_HIGH. The likely cause is that the HO failure rate is high, which could be due to issues with the handover process, such as incorrect timing, insufficient resources"
+        }
+      ]
+    },
+    "local_a": {
+      "a": [
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: UE_SURGE | ACTION: ENABLE_LOAD_BALANCING",
+          "generated": "FAMILY: CONGESTION | CAUSE: UE_SURGE | ACTION: ENABLE_LOAD_BALANCING"
+        },
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: COVERAGE_OVERLAP | ACTION: INCREASE_ELECTRICAL_TILT",
+          "generated": "FAMILY: CONGESTION | CAUSE: COVERAGE_OVERLAP | ACTION: INCREASE_ELECTRICAL_TILT"
+        },
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: COVERAGE_OVERLAP | ACTION: INCREASE_ELECTRICAL_TILT",
+          "generated": "FAMILY: CONGESTION | CAUSE: COVERAGE_OVERLAP | ACTION: INCREASE_ELECTRICAL_TILT"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: PINGPONG_NEIGHBOR | ACTION: FIX_NEIGHBOR_RELATIONS",
+          "generated": "FAMILY: CONGESTION | CAUSE: NEIGHBOR_INCOMPATIBILITY | ACTION: INCREASE_ELECTRICAL_TILT"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT",
+          "generated": "FAMILY: CONGESTION | CAUSE: COVERAGE_OVERLAP | ACTION: INCREASE_ELECTRICAL_TILT"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: PINGPONG_NEIGHBOR | ACTION: FIX_NEIGHBOR_RELATIONS",
+          "generated": "FAMILY: CONGESTION | CAUSE: ANGLE_OFFSET | ACTION: INCREASE_ELECTRICAL_TILT"
+        }
+      ],
+      "b": [
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: UE_SURGE | ACTION: ENABLE_LOAD_BALANCING",
+          "generated": "FAMILY: CONGESTION | CAUSE: UE_SURGE | ACTION: ENABLE_LOAD_BALANCING"
+        },
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: PRB_EXHAUSTION | ACTION: ADD_CARRIER_OR_OFFLOAD",
+          "generated": "FAMILY: CONGESTION | CAUSE: PRB_EXHAUSTION | ACTION: ADD_CARRIER_OR_OFFLOAD"
+        },
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: PRB_EXHAUSTION | ACTION: ADD_CARRIER_OR_OFFLOAD",
+          "generated": "FAMILY: CONGESTION | CAUSE: PRB_EXHAUSTION | ACTION: ADD_CARRIER_OR_OFFLOAD"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT",
+          "generated": "FAMILY: CONGESTION | CAUSE: NEIGHBOR_INCOMPATIBILITY | ACTION: INCREASE_ELECTRICAL_TILT"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT",
+          "generated": "FAMILY: CONGESTION | CAUSE: NEIGHBOR_COVERAGE_OVERLAP | ACTION: INCREASE_ELECTRICAL_TILT"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT",
+          "generated": "FAMILY: CONGESTION | CAUSE: NEIGHBOR_UNSTABILITY | ACTION: INCREASE_ELECTRICAL_TILT"
+        }
+      ]
+    },
+    "local_b": {
+      "a": [
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: UE_SURGE | ACTION: ENABLE_LOAD_BALANCING",
+          "generated": "FAMILY: NONE | CAUSE: NONE | ACTION: NO_ACTION"
+        },
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: COVERAGE_OVERLAP | ACTION: INCREASE_ELECTRICAL_TILT",
+          "generated": "FAMILY: NONE | CAUSE: NONE | ACTION: NO_ACTION"
+        },
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: COVERAGE_OVERLAP | ACTION: INCREASE_ELECTRICAL_TILT",
+          "generated": "FAMILY: NONE | CAUSE: NONE | ACTION: NO_ACTION"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: PINGPONG_NEIGHBOR | ACTION: FIX_NEIGHBOR_RELATIONS",
+          "generated": "FAMILY: MOBILITY | CAUSE: PINGPONG_NEIGHBOR | ACTION: FIX_NEIGHBOR_RELATIONS"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT",
+          "generated": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: PINGPONG_NEIGHBOR | ACTION: FIX_NEIGHBOR_RELATIONS",
+          "generated": "FAMILY: MOBILITY | CAUSE: PINGPONG_NEIGHBOR | ACTION: FIX_NEIGHBOR_RELATIONS"
+        }
+      ],
+      "b": [
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: UE_SURGE | ACTION: ENABLE_LOAD_BALANCING",
+          "generated": "FAMILY: NONE | CAUSE: NONE | ACTION: NO_ACTION"
+        },
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: PRB_EXHAUSTION | ACTION: ADD_CARRIER_OR_OFFLOAD",
+          "generated": "FAMILY: NONE | CAUSE: NONE | ACTION: NO_ACTION"
+        },
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: PRB_EXHAUSTION | ACTION: ADD_CARRIER_OR_OFFLOAD",
+          "generated": "FAMILY: NONE | CAUSE: NONE | ACTION: NO_ACTION"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT",
+          "generated": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT",
+          "generated": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT",
+          "generated": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT"
+        }
+      ]
+    },
+    "central": {
+      "a": [
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: UE_SURGE | ACTION: ENABLE_LOAD_BALANCING",
+          "generated": "FAMILY: CONGESTION | CAUSE: UE_SURGE | ACTION: ENABLE_LOAD_BALANCING"
+        },
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: COVERAGE_OVERLAP | ACTION: INCREASE_ELECTRICAL_TILT",
+          "generated": "FAMILY: CONGESTION | CAUSE: COVERAGE_OVERLAP | ACTION: INCREASE_ELECTRICAL_TILT"
+        },
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: COVERAGE_OVERLAP | ACTION: INCREASE_ELECTRICAL_TILT",
+          "generated": "FAMILY: CONGESTION | CAUSE: COVERAGE_OVERLAP | ACTION: INCREASE_ELECTRICAL_TILT"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: PINGPONG_NEIGHBOR | ACTION: FIX_NEIGHBOR_RELATIONS",
+          "generated": "FAMILY: MOBILITY | CAUSE: PINGPONG_NEIGHBOR | ACTION: FIX_NEIGHBOR_RELATIONS"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT",
+          "generated": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: PINGPONG_NEIGHBOR | ACTION: FIX_NEIGHBOR_RELATIONS",
+          "generated": "FAMILY: MOBILITY | CAUSE: PINGPONG_NEIGHBOR | ACTION: FIX_NEIGHBOR_RELATIONS"
+        }
+      ],
+      "b": [
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: UE_SURGE | ACTION: ENABLE_LOAD_BALANCING",
+          "generated": "FAMILY: CONGESTION | CAUSE: UE_SURGE | ACTION: ENABLE_LOAD_BALANCING"
+        },
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: PRB_EXHAUSTION | ACTION: ADD_CARRIER_OR_OFFLOAD",
+          "generated": "FAMILY: CONGESTION | CAUSE: PRB_EXHAUSTION | ACTION: ADD_CARRIER_OR_OFFLOAD"
+        },
+        {
+          "true_family": "CONGESTION",
+          "expected": "FAMILY: CONGESTION | CAUSE: PRB_EXHAUSTION | ACTION: ADD_CARRIER_OR_OFFLOAD",
+          "generated": "FAMILY: CONGESTION | CAUSE: PRB_EXHAUSTION | ACTION: ADD_CARRIER_OR_OFFLOAD"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT",
+          "generated": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT",
+          "generated": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT"
+        },
+        {
+          "true_family": "MOBILITY",
+          "expected": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT",
+          "generated": "FAMILY: MOBILITY | CAUSE: HO_PARAM_MISTUNED | ACTION: TUNE_A3_OFFSET_AND_TTT"
+        }
+      ]
+    }
+  },
+  "status": "ok",
+  "finished": "2026-11-02T09:46:34Z"
+}
