@@ -1,0 +1,16 @@
+{
+  "run_id": "ran-nlm-fed-r6e1a-20261102T1350",
+  "unit": "federated-run (Task B variant r6e1: 6 rounds x 1 local epoch)",
+  "what": "FIX ATTEMPT for the instability found in Task B. The first two federated sessions (ran-nlm-fed-20261102T0911 and ran-nlm-fed-rep2-20261102T1149; 3 rounds x 2 local epochs, learning rate 2e-4, identical code and data) gave a good adapter once (pooled family accuracy 0.948) and a congestion-only adapter once (0.610). Working hypothesis, not tested: each client fits its own family within one local epoch, so the average of two opposing updates swings to one side (client drift). The ONLY change here is the round structure: 6 iterations x 1 local epoch (NLM_LOCAL_EPOCHS=1, --iterations 6), which keeps the total local training at 6 epochs (the same as the local-only baselines and the first sessions) but averages twice as often. Same code otherwise, same data, same initial adapter (b76ee534...), same instance types, NN_HFL (secure aggregation, certificate route), 2 clients, adapter-only exchange of 392 lora_* tensors. The scored model is the highest-iteration global adapter (iteration 7).",
+  "selected_after_seeing_test_results": "Yes. The recipe was chosen after the test results of the first two sessions were known, on the same frozen test text. It is one single-factor change, not a search, and every session is reported (none dropped), but the test text is no longer an untouched confirmation set for this recipe.",
+  "target": {
+    "metric": "FAMILY accuracy of the final global adapter on the test set for the family each site never logged at home (Site A: MOBILITY, Site B: CONGESTION)",
+    "value": 0.85,
+    "direction": "both at or above 0.85 in THIS run. The fix counts as stable only if this run and its declared replicate (second session, same recipe) both meet it. Earlier sessions are not replaced: all are reported side by side.",
+    "also": {"metric": "only LoRA tensors cross the boundary", "value": "adapter-only", "direction": "exchanged state holds 392 lora_* tensors (about 35 MB), no base weights and no text"}
+  },
+  "test_corpus_sha256": {"site_a_test": "07ade1409500c09cad174cb0b876ce59fe10afc1b34d68d3a1e6ab99d34f5324", "site_b_test": "4338e882075b9e174cffb152a150ab96245358eaedf092bf33afbccd2522ab6c"},
+  "model_id": "OTel-LLM-1.7B-IT (organisers' bucket) + LoRA r=8 alpha=16 on q,k,v,o,gate,up,down; ran-fl/taskb/model-code/model.py (n_local_epochs now reads NLM_LOCAL_EPOCHS, default 2)",
+  "grader": "ran-fl/taskb/taskb_job.py (deterministic: log-likelihood ranking of the candidate FAMILY, CAUSE and ACTION; no model-written labels, no LLM judge)",
+  "not_claimed": "Differential privacy is not applied to Task B."
+}

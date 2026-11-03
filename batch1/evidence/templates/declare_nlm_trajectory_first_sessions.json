@@ -1,0 +1,13 @@
+{
+  "run_id": "__RUN_ID__",
+  "unit": "nlm-trajectory (Task B diagnostic: global adapters after the first and second aggregation of the first two federated sessions)",
+  "what": "No training. The global adapters after aggregation 1 and aggregation 2 (objects _2_aggregation_ and _3_aggregation_ in the transfer bucket, client A copy) of ran-nlm-fed-20261102T0911 (run1_agg1, run1_agg2) and ran-nlm-fed-rep2-20261102T1149 (rep2_agg1, rep2_agg2) are scored on the frozen test text with the same grader, writing one record per test example. Purpose: to see directly whether the global adapter swings between families from round to round, which the in-client validation logs suggested but could not show.",
+  "target": {
+    "metric": "none: a diagnostic, nothing is pass or fail",
+    "value": "reported as observed",
+    "direction": "Hypothesis written before the run (not tested until now): after aggregation 1 the adapter mostly answers NONE; later aggregations favour one family and the favoured family differs between sessions. A result that does not look like this is reported as it is."
+  },
+  "test_corpus_sha256": {"site_a_test": "07ade1409500c09cad174cb0b876ce59fe10afc1b34d68d3a1e6ab99d34f5324", "site_b_test": "4338e882075b9e174cffb152a150ab96245358eaedf092bf33afbccd2522ab6c"},
+  "model_id": "OTel-LLM-1.7B-IT (organisers' bucket) + LoRA r=8 alpha=16 on q,k,v,o,gate,up,down; ran-fl/taskb/model-code/model.py",
+  "grader": "ran-fl/taskb/taskb_job.py (deterministic: log-likelihood ranking of the candidate FAMILY, CAUSE and ACTION; no model-written labels, no LLM judge)"
+}

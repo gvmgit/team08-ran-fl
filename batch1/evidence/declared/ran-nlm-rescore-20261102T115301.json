@@ -1,0 +1,13 @@
+{
+  "run_id": "ran-nlm-rescore-20261102T115301",
+  "unit": "nlm-rescore (Task B: re-grade of existing adapters with one record per test example)",
+  "what": "No training. The untuned base, the two local-only adapters and the central adapter (all from ran-nlm-baselines-20261102T090507) and the final federated adapter of ran-nlm-fed-20261102T0911 are scored again on the frozen test text with the same log-likelihood grader, now writing one record per test example (true labels, the log-likelihood of every candidate at the family, cause and action stage, and the choice made) and the SHA-256 of every adapter file and of the test text.",
+  "target": {
+    "metric": "family confusion counts of every model, site and true family",
+    "value": "identical to the original scoring jobs (ran-nlm-baselines-20261102T090507 and ran-nlm-fed-score-20261102T093824)",
+    "direction": "exact match expected (same code path, same hardware class). Any difference is reported in GAPS.md, not hidden, and the per-example records become the reported numbers."
+  },
+  "test_corpus_sha256": {"site_a_test": "07ade1409500c09cad174cb0b876ce59fe10afc1b34d68d3a1e6ab99d34f5324", "site_b_test": "4338e882075b9e174cffb152a150ab96245358eaedf092bf33afbccd2522ab6c"},
+  "model_id": "OTel-LLM-1.7B-IT (organisers' bucket) + LoRA r=8 alpha=16 on q,k,v,o,gate,up,down; ran-fl/taskb/model-code/model.py",
+  "grader": "ran-fl/taskb/taskb_job.py (deterministic: log-likelihood ranking of the candidate FAMILY, CAUSE and ACTION; no model-written labels, no LLM judge)"
+}

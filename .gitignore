@@ -1,0 +1,20 @@
+# Secrets and private material: never commit. Our own certificates and keys live outside this folder (%USERPROFILE%\ran-fl-private).
+*.pem
+*.key
+*.p12
+*.pfx
+*.env
+.env*
+.aws/
+
+# Local caches and tool output (job folders and wheel caches are built under %TEMP%, listed here as a guard)
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+*.zip
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+~$*

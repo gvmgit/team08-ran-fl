@@ -1,0 +1,5 @@
+# Store every file byte for byte. tools/rebuild.js hashes the files in evidence/ (records, frozen test text),
+# so Git must never convert line endings on commit or checkout, on any machine.
+* -text
+*.safetensors binary
+*.tgz binary

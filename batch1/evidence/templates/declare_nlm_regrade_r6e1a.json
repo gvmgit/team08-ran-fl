@@ -1,0 +1,14 @@
+{
+  "run_id": "__RUN_ID__",
+  "unit": "nlm-regrade (Task B fix recipe r6e1, session 1: every global adapter scored)",
+  "what": "No training. The global adapters after aggregations 1 to 5 (r6e1a_agg1 .. r6e1a_agg5) and the final adapter after aggregation 6 (r6e1a, object _7_aggregation_) of the federated session ran-nlm-fed-r6e1a-20261102T1350 (6 rounds x 1 local epoch) are scored on the frozen test text with the same grader as before, writing one record per test example and copying the records to the evidence bucket from inside the job. The first and second sessions of the earlier recipe are scored in ran-nlm-regrade-20261102T121931 and ran-nlm-trajectory1-20261102T133915.",
+  "target": {
+    "metric": "FAMILY accuracy of the FINAL adapter (r6e1a) on the family each site never logged at home (Site A: MOBILITY, Site B: CONGESTION)",
+    "value": 0.85,
+    "direction": "both at or above 0.85: the target declared for this session in ran-nlm-fed-r6e1a-20261102T1350.json. The intermediate adapters are a diagnostic with no pass/fail target. Reported whatever the result.",
+    "stability": "The recipe counts as stable only if this session and its replicate (ran-nlm-fed-r6e1b-...) both meet the target."
+  },
+  "test_corpus_sha256": {"site_a_test": "07ade1409500c09cad174cb0b876ce59fe10afc1b34d68d3a1e6ab99d34f5324", "site_b_test": "4338e882075b9e174cffb152a150ab96245358eaedf092bf33afbccd2522ab6c"},
+  "model_id": "OTel-LLM-1.7B-IT (organisers' bucket) + LoRA r=8 alpha=16 on q,k,v,o,gate,up,down; ran-fl/taskb/model-code/model.py",
+  "grader": "ran-fl/taskb/taskb_job.py (deterministic: log-likelihood ranking of the candidate FAMILY, CAUSE and ACTION; no model-written labels, no LLM judge)"
+}

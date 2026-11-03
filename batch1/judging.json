@@ -1,0 +1,597 @@
+{
+  "primary_track": "track-2",
+  "team_code": "team08",
+  "evidence": {
+    "bucket": "bb26-p-team08-data-301431061930-use2",
+    "prefix": "evidence/"
+  },
+  "run_ids": [
+    "ran-local-only-20261102T080623",
+    "ran-central-20261102T080626",
+    "ran-fed-dp-20261102T0811",
+    "ran-rescore-main-20261102T090733",
+    "ran-stress-local-20261102T082611",
+    "ran-stress-central-20261102T082613",
+    "ran-stress-fed-dp-20261102T0835",
+    "ran-rescore-stress-20261102T090736",
+    "ran-nlm-baselines-20261102T090507",
+    "ran-nlm-fed-20261102T0911",
+    "ran-nlm-fed-rep2-20261102T1149",
+    "ran-nlm-regrade-20261102T121931",
+    "ran-nlm-fed-r6e1a-20261102T1350",
+    "ran-nlm-regrade-r6e1a-20261102T144016",
+    "ran-nlm-trajectory1-20261102T133915",
+    "ran-nlm-fed-r6e1b-20261102T1430",
+    "ran-nlm-regrade-r6e1b-20261102T170637"
+  ],
+  "live_test_command": "node tools/show_record.js --run-id {run_id} --item {item}",
+  "rebuild_command": "node tools/rebuild.js",
+  "reported_results": {
+    "local-only-control": {
+      "declared": "AUROC (Task A) or family accuracy (Task B) on the family a site never or rarely logs at home, local-only model; the federated model must beat it",
+      "task_a_main": {
+        "run_id": "ran-rescore-main-20261102T090733",
+        "auroc_rare_family": {
+          "site_a_mobility": 1,
+          "site_b_congestion": 1
+        },
+        "declared_expectation_at_or_below": 0.85,
+        "met": false,
+        "why": "the supplied data are saturated, see GAPS.md A1"
+      },
+      "task_a_stress": {
+        "run_id": "ran-rescore-stress-20261102T090736",
+        "auroc_withheld_family": {
+          "site_a_mobility": 0.2312,
+          "site_b_congestion": 0.199
+        },
+        "declared_expectation_at_or_below": 0.6,
+        "met": true
+      },
+      "task_b": {
+        "run_id": "ran-nlm-regrade-20261102T121931",
+        "family_accuracy_unseen_family": {
+          "site_a_mobility": 0,
+          "site_b_congestion": 0
+        },
+        "declared_expectation_at_or_below": 0.35,
+        "met": true
+      }
+    },
+    "federated-run": {
+      "declared": "Task A main: AUROC at or above 0.97 on all four site/label pairs and at least 0.5 of rare-family events warned 60 minutes ahead; Task A stress: AUROC at or above 0.90 on the withheld families; Task B: family accuracy at or above 0.85 on the family each site never logged",
+      "task_a_main": {
+        "run_id": "ran-fed-dp-20261102T0811",
+        "graded_in": "ran-rescore-main-20261102T090733",
+        "auroc": {
+          "site_a_congestion": 0.998,
+          "site_a_mobility": 0.9997,
+          "site_b_congestion": 0.9996,
+          "site_b_mobility": 0.9983
+        },
+        "f1": {
+          "site_a_congestion": 0.9881,
+          "site_a_mobility": 0.9903,
+          "site_b_congestion": 0.9865,
+          "site_b_mobility": 0.9903
+        },
+        "fraction_warned_60min_ahead_rare_family": {
+          "site_a_mobility": 1,
+          "site_b_congestion": 1
+        },
+        "met": true
+      },
+      "task_a_stress": {
+        "run_id": "ran-stress-fed-dp-20261102T0835",
+        "graded_in": "ran-rescore-stress-20261102T090736",
+        "auroc_withheld_family": {
+          "site_a_mobility": 0.9987,
+          "site_b_congestion": 0.996
+        },
+        "f1_withheld_family": {
+          "site_a_mobility": 0.8794,
+          "site_b_congestion": 0.7392
+        },
+        "fraction_warned_60min_ahead_withheld_family": {
+          "site_a_mobility": 1,
+          "site_b_congestion": 1
+        },
+        "met": true
+      },
+      "task_b": {
+        "recipes": {
+          "3_rounds_x_2_epochs": {
+            "description": "first recipe: 3 iterations x 2 local epochs, learning rate 2e-4",
+            "sessions": {
+              "first": {
+                "session_run_id": "ran-nlm-fed-20261102T0911",
+                "graded_in": "ran-nlm-regrade-20261102T121931",
+                "family_accuracy_unseen_family": {
+                  "site_a_mobility": 1,
+                  "site_b_congestion": 0.89
+                },
+                "family_accuracy_overall_pooled": 0.9481,
+                "family_accuracy_overall": {
+                  "site_a": 0.95,
+                  "site_b": 0.9462
+                },
+                "met_declared_target_at_least_0_85_on_both_unseen_families": true,
+                "beats_local_only_on_both_unseen_families": true
+              },
+              "replicate": {
+                "session_run_id": "ran-nlm-fed-rep2-20261102T1149",
+                "graded_in": "ran-nlm-regrade-20261102T121931",
+                "family_accuracy_unseen_family": {
+                  "site_a_mobility": 0,
+                  "site_b_congestion": 1
+                },
+                "family_accuracy_overall_pooled": 0.6096,
+                "family_accuracy_overall": {
+                  "site_a": 0.6038,
+                  "site_b": 0.6154
+                },
+                "met_declared_target_at_least_0_85_on_both_unseen_families": false,
+                "beats_local_only_on_both_unseen_families": false
+              }
+            },
+            "stable_all_sessions_meet_target": false
+          },
+          "6_rounds_x_1_epoch": {
+            "description": "fix recipe: 6 iterations x 1 local epoch (same total local training), learning rate 2e-4; chosen after seeing the test results of the first recipe",
+            "sessions": {
+              "first": {
+                "session_run_id": "ran-nlm-fed-r6e1a-20261102T1350",
+                "graded_in": "ran-nlm-regrade-r6e1a-20261102T144016",
+                "family_accuracy_unseen_family": {
+                  "site_a_mobility": 0.97,
+                  "site_b_congestion": 1
+                },
+                "family_accuracy_overall_pooled": 0.975,
+                "family_accuracy_overall": {
+                  "site_a": 0.9731,
+                  "site_b": 0.9769
+                },
+                "met_declared_target_at_least_0_85_on_both_unseen_families": true,
+                "beats_local_only_on_both_unseen_families": true
+              },
+              "replicate": {
+                "session_run_id": "ran-nlm-fed-r6e1b-20261102T1430",
+                "graded_in": "ran-nlm-regrade-r6e1b-20261102T170637",
+                "family_accuracy_unseen_family": {
+                  "site_a_mobility": 0.98,
+                  "site_b_congestion": 1
+                },
+                "family_accuracy_overall_pooled": 0.9788,
+                "family_accuracy_overall": {
+                  "site_a": 0.9769,
+                  "site_b": 0.9808
+                },
+                "met_declared_target_at_least_0_85_on_both_unseen_families": true,
+                "beats_local_only_on_both_unseen_families": true
+              }
+            },
+            "stable_all_sessions_meet_target": true
+          }
+        },
+        "intermediate_rounds_diagnostic": [
+          {
+            "model": "run1_agg1",
+            "description": "session 1 (3 rounds x 2 epochs), global adapter after aggregation 1",
+            "graded_in": "ran-nlm-trajectory1-20261102T133915",
+            "family_accuracy_by_true_family": {
+              "site_a": {
+                "CONGESTION": 0,
+                "MOBILITY": 0,
+                "NONE": 1
+              },
+              "site_b": {
+                "CONGESTION": 0,
+                "MOBILITY": 0,
+                "NONE": 1
+              }
+            },
+            "family_accuracy_overall_pooled": 0.2308
+          },
+          {
+            "model": "run1_agg2",
+            "description": "session 1, after aggregation 2",
+            "graded_in": "ran-nlm-trajectory1-20261102T133915",
+            "family_accuracy_by_true_family": {
+              "site_a": {
+                "CONGESTION": 0.25,
+                "MOBILITY": 1,
+                "NONE": 0.9667
+              },
+              "site_b": {
+                "CONGESTION": 0.34,
+                "MOBILITY": 1,
+                "NONE": 0.95
+              }
+            },
+            "family_accuracy_overall_pooled": 0.7192
+          },
+          {
+            "model": "federated",
+            "description": "session 1, after aggregation 3 (final)",
+            "graded_in": "ran-nlm-regrade-20261102T121931",
+            "family_accuracy_by_true_family": {
+              "site_a": {
+                "CONGESTION": 0.9,
+                "MOBILITY": 1,
+                "NONE": 0.95
+              },
+              "site_b": {
+                "CONGESTION": 0.89,
+                "MOBILITY": 1,
+                "NONE": 0.95
+              }
+            },
+            "family_accuracy_overall_pooled": 0.9481
+          },
+          {
+            "model": "rep2_agg1",
+            "description": "replicate, after aggregation 1",
+            "graded_in": "ran-nlm-trajectory1-20261102T133915",
+            "family_accuracy_by_true_family": {
+              "site_a": {
+                "CONGESTION": 0,
+                "MOBILITY": 0,
+                "NONE": 1
+              },
+              "site_b": {
+                "CONGESTION": 0,
+                "MOBILITY": 0,
+                "NONE": 1
+              }
+            },
+            "family_accuracy_overall_pooled": 0.2308
+          },
+          {
+            "model": "rep2_agg2",
+            "description": "replicate, after aggregation 2",
+            "graded_in": "ran-nlm-trajectory1-20261102T133915",
+            "family_accuracy_by_true_family": {
+              "site_a": {
+                "CONGESTION": 0.1,
+                "MOBILITY": 1,
+                "NONE": 0.95
+              },
+              "site_b": {
+                "CONGESTION": 0.07,
+                "MOBILITY": 1,
+                "NONE": 0.95
+              }
+            },
+            "family_accuracy_overall_pooled": 0.6365
+          },
+          {
+            "model": "federated_rep2",
+            "description": "replicate, after aggregation 3 (final)",
+            "graded_in": "ran-nlm-regrade-20261102T121931",
+            "family_accuracy_by_true_family": {
+              "site_a": {
+                "CONGESTION": 1,
+                "MOBILITY": 0,
+                "NONE": 0.95
+              },
+              "site_b": {
+                "CONGESTION": 1,
+                "MOBILITY": 0.01,
+                "NONE": 0.9833
+              }
+            },
+            "family_accuracy_overall_pooled": 0.6096
+          },
+          {
+            "model": "r6e1a_agg1",
+            "description": "fix recipe session 1 (6 rounds x 1 epoch), global adapter after aggregation 1",
+            "graded_in": "ran-nlm-regrade-r6e1a-20261102T144016",
+            "family_accuracy_by_true_family": {
+              "site_a": {
+                "CONGESTION": 0,
+                "MOBILITY": 0,
+                "NONE": 1
+              },
+              "site_b": {
+                "CONGESTION": 0,
+                "MOBILITY": 0,
+                "NONE": 1
+              }
+            },
+            "family_accuracy_overall_pooled": 0.2308
+          },
+          {
+            "model": "r6e1a_agg2",
+            "description": "fix recipe session 1 (6 rounds x 1 epoch), global adapter after aggregation 2",
+            "graded_in": "ran-nlm-regrade-r6e1a-20261102T144016",
+            "family_accuracy_by_true_family": {
+              "site_a": {
+                "CONGESTION": 0.06,
+                "MOBILITY": 0.12,
+                "NONE": 0.9833
+              },
+              "site_b": {
+                "CONGESTION": 0.26,
+                "MOBILITY": 0.08,
+                "NONE": 1
+              }
+            },
+            "family_accuracy_overall_pooled": 0.3288
+          },
+          {
+            "model": "r6e1a_agg3",
+            "description": "fix recipe session 1 (6 rounds x 1 epoch), global adapter after aggregation 3",
+            "graded_in": "ran-nlm-regrade-r6e1a-20261102T144016",
+            "family_accuracy_by_true_family": {
+              "site_a": {
+                "CONGESTION": 0,
+                "MOBILITY": 1,
+                "NONE": 0.9333
+              },
+              "site_b": {
+                "CONGESTION": 0,
+                "MOBILITY": 1,
+                "NONE": 0.9667
+              }
+            },
+            "family_accuracy_overall_pooled": 0.6038
+          },
+          {
+            "model": "r6e1a_agg4",
+            "description": "fix recipe session 1 (6 rounds x 1 epoch), global adapter after aggregation 4",
+            "graded_in": "ran-nlm-regrade-r6e1a-20261102T144016",
+            "family_accuracy_by_true_family": {
+              "site_a": {
+                "CONGESTION": 1,
+                "MOBILITY": 0,
+                "NONE": 0.9333
+              },
+              "site_b": {
+                "CONGESTION": 1,
+                "MOBILITY": 0,
+                "NONE": 0.95
+              }
+            },
+            "family_accuracy_overall_pooled": 0.6019
+          },
+          {
+            "model": "r6e1a_agg5",
+            "description": "fix recipe session 1 (6 rounds x 1 epoch), global adapter after aggregation 5",
+            "graded_in": "ran-nlm-regrade-r6e1a-20261102T144016",
+            "family_accuracy_by_true_family": {
+              "site_a": {
+                "CONGESTION": 0.38,
+                "MOBILITY": 1,
+                "NONE": 0.9333
+              },
+              "site_b": {
+                "CONGESTION": 0.36,
+                "MOBILITY": 1,
+                "NONE": 0.95
+              }
+            },
+            "family_accuracy_overall_pooled": 0.7442
+          },
+          {
+            "model": "r6e1a",
+            "description": "fix recipe session 1, after aggregation 6 (final)",
+            "graded_in": "ran-nlm-regrade-r6e1a-20261102T144016",
+            "family_accuracy_by_true_family": {
+              "site_a": {
+                "CONGESTION": 1,
+                "MOBILITY": 0.97,
+                "NONE": 0.9333
+              },
+              "site_b": {
+                "CONGESTION": 1,
+                "MOBILITY": 0.95,
+                "NONE": 0.9833
+              }
+            },
+            "family_accuracy_overall_pooled": 0.975
+          },
+          {
+            "model": "r6e1b_agg1",
+            "description": "fix recipe session 2 (6 rounds x 1 epoch, replicate), global adapter after aggregation 1",
+            "graded_in": "ran-nlm-regrade-r6e1b-20261102T170637",
+            "family_accuracy_by_true_family": {
+              "site_a": {
+                "CONGESTION": 0,
+                "MOBILITY": 0,
+                "NONE": 1
+              },
+              "site_b": {
+                "CONGESTION": 0,
+                "MOBILITY": 0,
+                "NONE": 1
+              }
+            },
+            "family_accuracy_overall_pooled": 0.2308
+          },
+          {
+            "model": "r6e1b_agg2",
+            "description": "fix recipe session 2 (6 rounds x 1 epoch, replicate), global adapter after aggregation 2",
+            "graded_in": "ran-nlm-regrade-r6e1b-20261102T170637",
+            "family_accuracy_by_true_family": {
+              "site_a": {
+                "CONGESTION": 0.06,
+                "MOBILITY": 0,
+                "NONE": 1
+              },
+              "site_b": {
+                "CONGESTION": 0.02,
+                "MOBILITY": 0.01,
+                "NONE": 1
+              }
+            },
+            "family_accuracy_overall_pooled": 0.2481
+          },
+          {
+            "model": "r6e1b_agg3",
+            "description": "fix recipe session 2 (6 rounds x 1 epoch, replicate), global adapter after aggregation 3",
+            "graded_in": "ran-nlm-regrade-r6e1b-20261102T170637",
+            "family_accuracy_by_true_family": {
+              "site_a": {
+                "CONGESTION": 0,
+                "MOBILITY": 1,
+                "NONE": 0.95
+              },
+              "site_b": {
+                "CONGESTION": 0,
+                "MOBILITY": 1,
+                "NONE": 0.95
+              }
+            },
+            "family_accuracy_overall_pooled": 0.6038
+          },
+          {
+            "model": "r6e1b_agg4",
+            "description": "fix recipe session 2 (6 rounds x 1 epoch, replicate), global adapter after aggregation 4",
+            "graded_in": "ran-nlm-regrade-r6e1b-20261102T170637",
+            "family_accuracy_by_true_family": {
+              "site_a": {
+                "CONGESTION": 0.96,
+                "MOBILITY": 0,
+                "NONE": 0.95
+              },
+              "site_b": {
+                "CONGESTION": 0.95,
+                "MOBILITY": 0.02,
+                "NONE": 1
+              }
+            },
+            "family_accuracy_overall_pooled": 0.5962
+          },
+          {
+            "model": "r6e1b_agg5",
+            "description": "fix recipe session 2 (6 rounds x 1 epoch, replicate), global adapter after aggregation 5",
+            "graded_in": "ran-nlm-regrade-r6e1b-20261102T170637",
+            "family_accuracy_by_true_family": {
+              "site_a": {
+                "CONGESTION": 0,
+                "MOBILITY": 1,
+                "NONE": 0.95
+              },
+              "site_b": {
+                "CONGESTION": 0,
+                "MOBILITY": 1,
+                "NONE": 0.95
+              }
+            },
+            "family_accuracy_overall_pooled": 0.6038
+          },
+          {
+            "model": "r6e1b",
+            "description": "fix recipe session 2, after aggregation 6 (final)",
+            "graded_in": "ran-nlm-regrade-r6e1b-20261102T170637",
+            "family_accuracy_by_true_family": {
+              "site_a": {
+                "CONGESTION": 1,
+                "MOBILITY": 0.98,
+                "NONE": 0.9333
+              },
+              "site_b": {
+                "CONGESTION": 1,
+                "MOBILITY": 0.98,
+                "NONE": 0.95
+              }
+            },
+            "family_accuracy_overall_pooled": 0.9788
+          }
+        ],
+        "baselines_family_accuracy_unseen_family": {
+          "untuned_base": {
+            "site_a_mobility": 0.94,
+            "site_b_congestion": 0.23
+          },
+          "local_only": {
+            "site_a_mobility": 0,
+            "site_b_congestion": 0
+          },
+          "central": {
+            "site_a_mobility": 1,
+            "site_b_congestion": 1
+          }
+        },
+        "baselines_family_accuracy_overall_pooled": {
+          "untuned_base": 0.6462,
+          "local_a": 0.6058,
+          "local_b": 0.6019,
+          "central": 0.9885
+        },
+        "reading": "Task B federated adapter. First recipe (3 rounds x 2 local epochs): one session met the declared target and its identical replicate did not, so it was not stable (GAPS.md B1). Fix recipe (6 rounds x 1 local epoch, the same total local training, chosen after seeing the first recipe's test results): both sessions met the target, pooled family accuracy 0.975 and 0.979, close to central (0.988). The intermediate global adapters of the fix sessions still flip between families from round to round and settle only in the last round, so the result is shown for these two sessions and this stopping round, not for other round counts."
+      },
+      "federated_beats_local_only": {
+        "task_a_main": false,
+        "task_a_stress": true,
+        "task_b": {
+          "3_rounds_x_2_epochs": {
+            "first": true,
+            "replicate": false
+          },
+          "6_rounds_x_1_epoch": {
+            "first": true,
+            "replicate": true
+          }
+        }
+      }
+    },
+    "privacy-budget": {
+      "declared": "epsilon of the DP-SGD run that executes, counting real optimizer steps, at or below 1.0",
+      "task_a_main": {
+        "run_id": "ran-fed-dp-20261102T0811",
+        "epsilon_target": 1,
+        "epsilon_spent": 0.4268,
+        "delta": 1.90039945636413e-12,
+        "noise_multiplier": 2,
+        "real_optimizer_steps": 8502,
+        "met": true
+      },
+      "task_a_stress": {
+        "run_id": "ran-stress-fed-dp-20261102T0835",
+        "epsilon_spent": 0.4268,
+        "met": true
+      },
+      "task_b": "no differential privacy applied (see GAPS.md)"
+    },
+    "distance-to-central-baseline": {
+      "declared": "central model is a baseline only, outside the federated path; its floor was declared (Task A main at or above 0.95), a maximum gap was not (GAPS.md C13)",
+      "task_a_main": {
+        "central_run_id": "ran-central-20261102T080626",
+        "graded_in": "ran-rescore-main-20261102T090733",
+        "mean_auroc_central": 1,
+        "mean_auroc_federated": 0.9989,
+        "gap_central_minus_federated": 0.0011
+      },
+      "task_a_stress": {
+        "central_run_id": "ran-stress-central-20261102T082613",
+        "graded_in": "ran-rescore-stress-20261102T090736",
+        "mean_auroc_central_withheld_family": 0.9921,
+        "mean_auroc_federated_withheld_family": 0.9974,
+        "gap_central_minus_federated": -0.0052
+      },
+      "task_b": {
+        "graded_in": "ran-nlm-regrade-20261102T121931",
+        "central_family_accuracy_overall_pooled": 0.9885,
+        "federated_family_accuracy_overall_pooled": {
+          "3_rounds_x_2_epochs": {
+            "first": 0.9481,
+            "replicate": 0.6096
+          },
+          "6_rounds_x_1_epoch": {
+            "first": 0.975,
+            "replicate": 0.9788
+          }
+        }
+      }
+    },
+    "declared-targets-missed": [
+      "main local-only A: AUROC on the family the site rarely sees (declared expectation: at or below 0.85) (declared in ran-local-only-20261102T080623.json)",
+      "main local-only B: AUROC on the family the site rarely sees (declared expectation: at or below 0.85) (declared in ran-local-only-20261102T080623.json)",
+      "main: federated beats local-only A on the rare family (declared: \"the federated model must beat it\") (declared in ran-local-only-20261102T080623.json)",
+      "main: federated beats local-only B on the rare family (declared: \"the federated model must beat it\") (declared in ran-local-only-20261102T080623.json)",
+      "untuned base: family accuracy on Site A MOBILITY (declared in ran-nlm-baselines-20261102T090507.json)",
+      "federated REPLICATE: family accuracy on Site A MOBILITY (never logged at Site A) (declared in ran-nlm-fed-rep2-20261102T1149.json)"
+    ]
+  }
+}

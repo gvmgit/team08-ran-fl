@@ -1,0 +1,17 @@
+{
+  "run_id": "ran-central-20261102T080626",
+  "unit": "central-baseline",
+  "what": "Baseline only, outside the federated path: the same network trained on the pooled train days of both sites (synthetic data), from the same initial weights.",
+  "target": {
+    "metric": "AUROC on the frozen test days, mean over both sites and both labels, central model",
+    "value": 0.95,
+    "direction": "expected upper reference; distance to it is the federated model's gap"
+  },
+  "test_set_sha256": {
+    "site_a_days_96_119": "4e96a5cbf3935cc50ef9e46d7f01993138880e547433011d0b9f036e6642420e",
+    "site_b_days_96_119": "c74c888b0f95ac8c5f20f9d121166fe5c437731cb2f5857528c85eb34de93ede"
+  },
+  "split": {"train_days": "0-83", "validation_days": "85-94", "test_days": "96-119", "gap_days": "84, 95"},
+  "model_id": "ran-ews-mlp-540-128-64-2 (ran-fl/model-code/model.py)",
+  "grader": "ran-fl/aws/eval_job.py (deterministic script, no model; AUROC, validation-tuned F1, 60-minute lead recall)"
+}

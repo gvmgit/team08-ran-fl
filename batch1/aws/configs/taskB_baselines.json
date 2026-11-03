@@ -1,0 +1,55 @@
+{
+    "base_s3":  "bb26-p-team08-nlm-301431061930-usw2/base-model/otel-llm-1.7b-it",
+    "sites":  {
+                  "a":  {
+                            "bucket":  "bb26-p-team08-silo-a-301431061930-usw2",
+                            "prefix":  "text/"
+                        },
+                  "b":  {
+                            "bucket":  "bb26-p-team08-silo-b-301431061930-usw2",
+                            "prefix":  "text/"
+                        }
+              },
+    "train":  [
+                  {
+                      "name":  "local_a",
+                      "epochs":  6,
+                      "sites":  [
+                                    "a"
+                                ]
+                  },
+                  {
+                      "name":  "local_b",
+                      "epochs":  6,
+                      "sites":  [
+                                    "b"
+                                ]
+                  },
+                  {
+                      "name":  "central",
+                      "epochs":  6,
+                      "sites":  [
+                                    "a",
+                                    "b"
+                                ]
+                  }
+              ],
+    "score":  [
+                  {
+                      "adapter":  "initial",
+                      "name":  "untuned_base"
+                  },
+                  {
+                      "adapter":  "trained:local_a",
+                      "name":  "local_a"
+                  },
+                  {
+                      "adapter":  "trained:local_b",
+                      "name":  "local_b"
+                  },
+                  {
+                      "adapter":  "trained:central",
+                      "name":  "central"
+                  }
+              ]
+}

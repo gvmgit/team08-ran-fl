@@ -1,0 +1,36 @@
+{
+    "sites":  {
+                  "a":  {
+                            "bucket":  "bb26-p-team08-silo-a-301431061930-usw2",
+                            "key":  "data/site_a_cell_minute.csv",
+                            "seed":  4201,
+                            "majority":  "congestion"
+                        },
+                  "b":  {
+                            "bucket":  "bb26-p-team08-silo-b-301431061930-usw2",
+                            "key":  "data/site_b_cell_minute.csv",
+                            "seed":  4302,
+                            "majority":  "mobility"
+                        }
+              },
+    "withhold":  {
+                     "a":  "mobility",
+                     "b":  "congestion"
+                 },
+    "rare_fraction":  0,
+    "counts":  {
+                   "train":  {
+                                 "majority":  500,
+                                 "none":  200
+                             },
+                   "val":  {
+                               "majority":  60,
+                               "none":  30
+                           },
+                   "test":  {
+                                "congestion":  100,
+                                "mobility":  100,
+                                "none":  60
+                            }
+               }
+}
