@@ -1,7 +1,0 @@
-# Same file in every silo. torch is pinned to the version in the GPU image
-# 763104351884.dkr.ecr.us-west-2.amazonaws.com/pytorch-training:2.8.0-gpu-py312-cu129-ubuntu22.04-sagemaker
-# ("==2.8.0" also matches the image's "2.8.0+cu129", so pip leaves its CUDA build alone).
-# The training-client wheel adds its own pinned dependencies (opacus, safetensors, boto3, numpy).
-torch==2.8.0
-numpy
-pandas
