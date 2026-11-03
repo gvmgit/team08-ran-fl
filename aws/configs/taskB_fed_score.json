@@ -1,0 +1,22 @@
+{
+    "base_s3":  "bb26-p-team08-nlm-301431061930-usw2/base-model/otel-llm-1.7b-it",
+    "sites":  {
+                  "a":  {
+                            "bucket":  "bb26-p-team08-silo-a-301431061930-usw2",
+                            "prefix":  "text/"
+                        },
+                  "b":  {
+                            "bucket":  "bb26-p-team08-silo-b-301431061930-usw2",
+                            "prefix":  "text/"
+                        }
+              },
+    "train":  [
+
+              ],
+    "score":  [
+                  {
+                      "adapter":  "s3://bb26-p-team08-nlm-301431061930-usw2/outputs/ran-nlm-fed-20261102T0911/federated_final_iteration4.safetensors",
+                      "name":  "federated"
+                  }
+              ]
+}

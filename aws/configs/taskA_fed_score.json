@@ -1,0 +1,28 @@
+{
+    "sites":  {
+                  "a":  {
+                            "bucket":  "bb26-p-team08-silo-a-301431061930-usw2",
+                            "key":  "data/site_a_cell_minute.csv"
+                        },
+                  "b":  {
+                            "bucket":  "bb26-p-team08-silo-b-301431061930-usw2",
+                            "key":  "data/site_b_cell_minute.csv"
+                        }
+              },
+    "train":  [
+
+              ],
+    "score":  [
+                  {
+                      "weights":  "s3://bb26-p-team08-data-301431061930-use2/ran-fl/models/ran-fed-dp-20261102T0811/federated_final_iteration4.safetensors",
+                      "name":  "federated_dp"
+                  }
+              ],
+    "dp":  {
+               "global_iterations":  3
+           },
+    "expected_test_slice_sha256":  {
+                                       "a":  "4e96a5cbf3935cc50ef9e46d7f01993138880e547433011d0b9f036e6642420e",
+                                       "b":  "c74c888b0f95ac8c5f20f9d121166fe5c437731cb2f5857528c85eb34de93ede"
+                                   }
+}

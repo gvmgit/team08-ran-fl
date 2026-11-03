@@ -1,0 +1,8 @@
+# Same file in every silo. torch is pinned to the GPU image (2.8.0+cu129); the training-client wheel adds boto3, numpy,
+# safetensors and opacus.
+torch==2.8.0
+# The training-client wheel pins huggingface-hub==0.31.2, so transformers must be a release that accepts that hub
+# (4.52.x requires huggingface-hub>=0.30,<1.0 and already supports Qwen3, which arrived in 4.51).
+transformers==4.52.4
+peft==0.15.2
+accelerate

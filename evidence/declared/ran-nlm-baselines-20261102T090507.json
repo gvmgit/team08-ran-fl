@@ -1,0 +1,14 @@
+{
+  "run_id": "ran-nlm-baselines-20261102T090507",
+  "unit": "nlm-baselines (untuned base model, local-only adapters, central adapter)",
+  "what": "Task B baselines. The frozen OTel-LLM-1.7B-IT (Qwen3) base is scored untuned; each site trains the same LoRA adapter alone on its own text (6 epochs); a central adapter is trained on both sites' text pooled (baseline only, outside the federated path). Each site's rare failure family is never in its training text.",
+  "target": {
+    "metric": "FAMILY accuracy on the test set for the family each site never logged at home (Site A: MOBILITY, Site B: CONGESTION), 100 test examples each",
+    "value": 0.35,
+    "direction": "local-only adapters expected at or below 0.35 (near zero, never shown the family); untuned base expected at or below 0.45 (three-way choice, near chance); central expected at or above 0.90"
+  },
+  "test_corpus_sha256": {"site_a_test": "07ade1409500c09cad174cb0b876ce59fe10afc1b34d68d3a1e6ab99d34f5324", "site_b_test": "4338e882075b9e174cffb152a150ab96245358eaedf092bf33afbccd2522ab6c"},
+  "split": {"corpus": "train 700, validation 90, test 260 examples per site (config in the corpus manifest)", "seeds": "generator 4201 (A), 4302 (B); training seed 1234"},
+  "model_id": "OTel-LLM-1.7B-IT (organisers' bucket) + LoRA r=8 alpha=16 on q,k,v,o,gate,up,down; ran-fl/taskb/model-code/model.py",
+  "grader": "ran-fl/taskb/taskb_job.py (deterministic: log-likelihood ranking of the candidate FAMILY, CAUSE and ACTION; no model-written labels, no LLM judge)"
+}

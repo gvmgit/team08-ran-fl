@@ -1,0 +1,26 @@
+{
+  "run_id": "ran-stress-fed-dp-20261102T0835",
+  "unit": "federated-run (stress: rare family never logged at home)",
+  "what": "One Crosstrainer session, NN_HFL_WITH_DP, 2 clients, 3 iterations. Site A withholds y_mobility and Site B withholds y_congestion from its training labels (RAN_WITHHOLD_LABEL), so each family is only ever labelled at the other site. The scored model is the highest-iteration global model.",
+  "target": {
+    "metric": "AUROC of the final global model on the frozen test days for the withheld family at home (Site A: y_mobility, Site B: y_congestion)",
+    "value": 0.9,
+    "direction": "both at or above 0.90, i.e. a site that never logged a family detects it after federation",
+    "also": {
+      "metric": "fraction of true events warned at least 60 minutes ahead for the same two (site, family) pairs, threshold calibrated on the other site's validation days",
+      "value": 0.5,
+      "direction": "at or above 0.5"
+    }
+  },
+  "also_declares": {
+    "unit": "privacy-budget-epsilon",
+    "target": {"metric": "epsilon counting real optimizer steps, per client, delta = n^-2", "value": 1.0, "direction": "at or below 1.0"}
+  },
+  "test_set_sha256": {
+    "site_a_days_96_119": "4e96a5cbf3935cc50ef9e46d7f01993138880e547433011d0b9f036e6642420e",
+    "site_b_days_96_119": "c74c888b0f95ac8c5f20f9d121166fe5c437731cb2f5857528c85eb34de93ede"
+  },
+  "split": {"train_days": "0-83", "validation_days": "85-94", "test_days": "96-119", "gap_days": "84, 95"},
+  "model_id": "ran-ews-mlp-540-128-64-2 (ran-fl/model-code/model.py)",
+  "grader": "ran-fl/aws/eval_job.py (deterministic script, no model)"
+}
